@@ -15,9 +15,17 @@ class Portifolio extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: kCorPrimaria,
-        colorScheme: ColorScheme.fromSeed(seedColor: kCorPrimaria),
+        colorScheme:
+            ColorScheme.fromSwatch(
+              primarySwatch: MaterialColor(kHashCorPrimaria, kCorPrimariaSwatch),
+            ).copyWith(
+              secondary: kCorSecundaria,
+            ),
         scaffoldBackgroundColor: Colors.white,
-        appBarTheme: AppBarTheme(backgroundColor: Colors.white),
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.white,
+          surfaceTintColor: Colors.white,
+        ),
         filledButtonTheme: FilledButtonThemeData(
           style: FilledButton.styleFrom(
             backgroundColor: kCorPrimaria,

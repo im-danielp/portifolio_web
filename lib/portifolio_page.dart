@@ -8,11 +8,15 @@ class PortifolioPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: Header(),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [Sobre()],
-        ),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return CustomScrollView(
+            slivers: [
+              Header(),
+              Sobre(constraints: constraints),
+            ],
+          );
+        },
       ),
     );
   }
