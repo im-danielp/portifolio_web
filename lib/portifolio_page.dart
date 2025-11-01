@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:portifolio_web/header/header.dart';
+import 'package:portifolio_web/helper/constants.dart';
 import 'package:portifolio_web/sections/sobre.dart';
 
 class PortifolioPage extends StatelessWidget {
@@ -13,6 +15,7 @@ class PortifolioPage extends StatelessWidget {
           return CustomScrollView(
             slivers: [
               Header(),
+              SliverToBoxAdapter(child: Gap(constraints.maxWidth > kLarguraMedia ? 70 : 60)),
               Sobre(constraints: constraints),
             ],
           );

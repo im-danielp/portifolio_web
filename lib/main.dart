@@ -48,6 +48,9 @@ class Portifolio extends StatelessWidget {
             foregroundColor: const Color.fromARGB(255, 39, 39, 39),
           ),
         ),
+        iconButtonTheme: IconButtonThemeData(
+          style: IconButton.styleFrom(overlayColor: Colors.transparent),
+        ),
       ),
       home: PortifolioPage(),
     );

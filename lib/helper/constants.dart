@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-const Color kCorPrimaria = Color(0xFF692AE6);
 const int kHashCorPrimaria = 0xFF692AE6;
+const Color kCorPrimaria = Color(kHashCorPrimaria);
 const Map<int, Color> kCorPrimariaSwatch = {
   50: Color(kHashCorPrimaria),
   100: Color(kHashCorPrimaria),
