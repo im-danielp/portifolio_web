@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:portifolio_web/helper/constants.dart';
 import 'package:portifolio_web/portifolio_page.dart';
 
@@ -21,6 +22,8 @@ class Portifolio extends StatelessWidget {
             ).copyWith(
               secondary: kCorSecundaria,
             ),
+        textTheme: GoogleFonts.interTextTheme(Theme.of(context).textTheme),
+        primaryTextTheme: GoogleFonts.interTextTheme(Theme.of(context).primaryTextTheme),
         scaffoldBackgroundColor: Colors.white,
         appBarTheme: AppBarTheme(
           backgroundColor: Colors.white,
@@ -30,6 +33,13 @@ class Portifolio extends StatelessWidget {
           style: FilledButton.styleFrom(
             backgroundColor: kCorPrimaria,
             shape: RoundedRectangleBorder(borderRadius: BorderRadiusGeometry.circular(5)),
+          ),
+        ),
+        outlinedButtonTheme: OutlinedButtonThemeData(
+          style: OutlinedButton.styleFrom(
+            shape: RoundedRectangleBorder(borderRadius: BorderRadiusGeometry.circular(5)),
+            side: BorderSide(color: kCorPrimaria, width: 2),
+            overlayColor: Colors.transparent,
           ),
         ),
         textButtonTheme: TextButtonThemeData(
