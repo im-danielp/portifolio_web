@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:portifolio_web/header/header.dart';
-import 'package:portifolio_web/helper/constants.dart';
-import 'package:portifolio_web/sections/sobre.dart';
+import 'package:portifolio_web/view/header/header.dart';
+import 'package:portifolio_web/controller/constants.dart';
+import 'package:portifolio_web/view/sections/habilidades.dart';
+import 'package:portifolio_web/view/sections/sobre.dart';
 
 class PortifolioPage extends StatelessWidget {
   const PortifolioPage({super.key});
@@ -17,6 +18,8 @@ class PortifolioPage extends StatelessWidget {
               Header(),
               SliverToBoxAdapter(child: Gap(constraints.maxWidth > kLarguraMedia ? 70 : 60)),
               Sobre(constraints: constraints),
+              SliverToBoxAdapter(child: Gap(constraints.maxWidth > kLarguraMedia ? 70 : 60)),
+              Habilidades(constraints: constraints),
             ],
           );
         },

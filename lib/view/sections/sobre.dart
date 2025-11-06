@@ -1,27 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:portifolio_web/helper/constants.dart';
-import 'package:web/web.dart' as web;
+import 'package:portifolio_web/controller/constants.dart';
+import 'package:portifolio_web/controller/sobre_controller.dart';
 
 class Sobre extends StatelessWidget {
   final BoxConstraints constraints;
 
   const Sobre({super.key, required this.constraints});
 
-  // Abre uma nova página para a URL especificada.
-  Future<void> abrirPagina(int index) async {
-    const List<String> urls = [
-      'https://github.com/im-danielp',
-      'https://www.linkedin.com/in/daniel-pacheco-ferreira',
-      'mailto:danielpfcont@gmail.com?subject=Entrevista%20de%20emprego',
-      'https://api.whatsapp.com/send/?phone=%2B5562992980263&text=Ol%C3%A1+Daniel%21+Vi+seu+curr%C3%ADculo+e+gostaria+de+marcar+uma+entrevista+de+emprego+com+voc%C3%AA&type=phone_number&app_absent=0',
-    ];
-
-    web.window.open(urls[index], '_blank');
-  }
-
   @override
   Widget build(BuildContext context) {
+    final controller = SobreController();
     final maxWidth = constraints.maxWidth;
 
     return SliverToBoxAdapter(
@@ -82,7 +71,7 @@ class Sobre extends StatelessWidget {
                             spacing: 18,
                             children: [
                               InkWell(
-                                onTap: () => abrirPagina(0),
+                                onTap: () => controller.abrirPagina(0),
                                 borderRadius: BorderRadius.circular(8),
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(8),
@@ -94,7 +83,7 @@ class Sobre extends StatelessWidget {
                                 ),
                               ),
                               InkWell(
-                                onTap: () => abrirPagina(1),
+                                onTap: () => controller.abrirPagina(1),
                                 borderRadius: BorderRadius.circular(8),
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(8),
@@ -106,7 +95,7 @@ class Sobre extends StatelessWidget {
                                 ),
                               ),
                               InkWell(
-                                onTap: () => abrirPagina(2),
+                                onTap: () => controller.copiarEmail(context, constraints.maxWidth),
                                 child: Icon(Icons.email),
                               ),
                             ],
@@ -121,7 +110,7 @@ class Sobre extends StatelessWidget {
                               style: FilledButton.styleFrom(
                                 padding: EdgeInsets.symmetric(vertical: 18, horizontal: 12),
                               ),
-                              onPressed: () => abrirPagina(4),
+                              onPressed: () => controller.abrirPagina(3),
                             ),
                             OutlinedButton.icon(
                               icon: Icon(Icons.assignment_ind_outlined),
@@ -129,7 +118,7 @@ class Sobre extends StatelessWidget {
                               style: OutlinedButton.styleFrom(
                                 padding: EdgeInsets.symmetric(vertical: 18, horizontal: 12),
                               ),
-                              onPressed: () {},
+                              onPressed: () async => controller.abrirCurriculo(),
                             ),
                           ],
                         ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:portifolio_web/helper/constants.dart';
-import 'package:portifolio_web/portifolio_page.dart';
+import 'package:portifolio_web/controller/constants.dart';
+import 'package:portifolio_web/view/portifolio_page.dart';
 
 void main() {
   runApp(const Portifolio());
@@ -52,7 +52,7 @@ class Portifolio extends StatelessWidget {
           style: IconButton.styleFrom(overlayColor: Colors.transparent),
         ),
       ),
-      home: PortifolioPage(),
+      home: SelectionArea(child: PortifolioPage()),
     );
   }
 }
