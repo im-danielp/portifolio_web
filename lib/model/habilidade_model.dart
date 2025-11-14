@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
 class HabilidadeModel {
-  final Icon icone;
+  final IconData icone;
   final String titulo;
   final String descricao;
 

@@ -15,11 +15,11 @@ class PortifolioPage extends StatelessWidget {
         builder: (context, constraints) {
           return CustomScrollView(
             slivers: [
-              Header(),
+              const Header(),
               SliverToBoxAdapter(child: Gap(constraints.maxWidth > kLarguraMedia ? 70 : 60)),
               Sobre(constraints: constraints),
               SliverToBoxAdapter(child: Gap(constraints.maxWidth > kLarguraMedia ? 70 : 60)),
-              Habilidades(constraints: constraints),
+              const Habilidades(),
             ],
           );
         },

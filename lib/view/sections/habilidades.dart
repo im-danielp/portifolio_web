@@ -2,27 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:portifolio_web/model/habilidade_model.dart';
 
 class Habilidades extends StatelessWidget {
-  final BoxConstraints constraints;
-
-  const Habilidades({super.key, required this.constraints});
+  const Habilidades({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final maxWidth = constraints.maxWidth;
+    final primaryColor = Theme.of(context).primaryColor;
 
     final List<HabilidadeModel> habilidades = [
       HabilidadeModel(
-        icone: Icon(Icons.phone_iphone),
+        icone: Icons.phone_iphone,
         titulo: 'Desenvolvimento Mobile',
         descricao: 'Experiência Flutter e desenvolvimento para dispositivos Android/iOS',
       ),
       HabilidadeModel(
-        icone: Icon(Icons.data_object_rounded),
+        icone: Icons.data_object_rounded,
         titulo: 'Backend & APIs',
         descricao: 'Integração com APIs, manipulação de banco de dados SQL',
       ),
       HabilidadeModel(
-        icone: Icon(Icons.format_paint_outlined),
+        icone: Icons.format_paint_outlined,
         titulo: 'UI/UX Design',
         descricao: 'Design de interfaces intuitivas e experiências de usuário otimizadas',
       ),
@@ -31,34 +29,59 @@ class Habilidades extends StatelessWidget {
     return SliverToBoxAdapter(
       child: Container(
         width: 200,
-        height: 500,
-        color: Colors.grey.shade100,
-        padding: EdgeInsets.symmetric(horizontal: 80),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        // height: 330,
+        color: const Color.fromARGB(255, 250, 250, 250),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
-            ...habilidades.map(
-              (e) => Container(
-                width: 350,
-                // margin: EdgeInsets.all(8),
-                padding: EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(color: Colors.grey),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    e.icone,
-                    SizedBox(height: 8),
-                    Text(e.titulo, style: TextStyle(fontWeight: FontWeight.bold)),
-                    SizedBox(height: 4),
-                    Text(e.descricao),
-                  ],
-                ),
-              ),
+            SizedBox(height: 24),
+            Text(
+              'Habilidades & Expertise',
+              style: TextStyle(fontWeight: FontWeight.bold),
             ),
+            Text(
+              'Domínio em diversas tecnologias e frameworks para desenvolvimento de aplicações móveis e web de alta qualidade.',
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 24),
+            Wrap(
+              runSpacing: 30,
+              spacing: 15,
+              children: [
+                ...habilidades.map(
+                  (e) => Container(
+                    width: 350,
+                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 30),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      border: Border.all(color: primaryColor),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            color: primaryColor.withValues(alpha: 0.2),
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          child: Icon(
+                            e.icone,
+                            color: primaryColor,
+                          ),
+                        ),
+                        const SizedBox(height: 12),
+                        Text(e.titulo, style: const TextStyle(fontWeight: FontWeight.bold)),
+                        const SizedBox(height: 28),
+                        Text(e.descricao, textAlign: TextAlign.center),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 24),
           ],
         ),
       ),
