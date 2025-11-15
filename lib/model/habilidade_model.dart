@@ -5,5 +5,9 @@ class HabilidadeModel {
   final String titulo;
   final String descricao;
 
-  HabilidadeModel({required this.icone, required this.titulo, required this.descricao});
+  const HabilidadeModel({
+    required this.icone,
+    required this.titulo,
+    required this.descricao,
+  });
 }

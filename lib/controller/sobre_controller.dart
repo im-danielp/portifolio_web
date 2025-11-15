@@ -18,11 +18,11 @@ class SobreController {
 
   // Copia e-mail para área de transferência.
   Future<void> copiarEmail(BuildContext context, double maxWidth) async {
-    await Clipboard.setData(ClipboardData(text: 'danielpfcont@gmail.com'));
+    await Clipboard.setData(const ClipboardData(text: 'danielpfcont@gmail.com'));
     if (!context.mounted) return;
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
+      const SnackBar(
         width: 700,
         backgroundColor: Colors.green,
         behavior: SnackBarBehavior.floating,

@@ -17,8 +17,8 @@ class _HeaderState extends State<Header> {
   Widget build(BuildContext context) {
     return SliverAppBar(
       floating: true,
-      title: Text('</>', style: TextStyle(fontSize: 16)),
-      actionsPadding: EdgeInsets.symmetric(horizontal: 24),
+      title: const Text('</>', style: TextStyle(fontSize: 16)),
+      actionsPadding: const EdgeInsets.symmetric(horizontal: 24),
       actions: [
         ...sections.map(
           (section) => TextButton(
@@ -26,7 +26,7 @@ class _HeaderState extends State<Header> {
               setState(() => selectedSection = section);
             },
             child: Padding(
-              padding: EdgeInsetsGeometry.only(left: 18),
+              padding: const EdgeInsetsGeometry.only(left: 18),
               child: Text(
                 section,
                 style: TextStyle(
@@ -37,10 +37,10 @@ class _HeaderState extends State<Header> {
           ),
         ),
         Padding(
-          padding: EdgeInsetsGeometry.only(left: 18),
+          padding: const EdgeInsetsGeometry.only(left: 18),
           child: FilledButton(
             onPressed: () {},
-            child: Text('Contato'),
+            child: const Text('Contato'),
           ),
         ),
       ],

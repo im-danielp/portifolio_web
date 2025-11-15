@@ -18,14 +18,14 @@ class Portifolio extends StatelessWidget {
         primaryColor: kCorPrimaria,
         colorScheme:
             ColorScheme.fromSwatch(
-              primarySwatch: MaterialColor(kHashCorPrimaria, kCorPrimariaSwatch),
+              primarySwatch: const MaterialColor(kHashCorPrimaria, kCorPrimariaSwatch),
             ).copyWith(
               secondary: kCorSecundaria,
             ),
         textTheme: GoogleFonts.interTextTheme(Theme.of(context).textTheme),
         primaryTextTheme: GoogleFonts.interTextTheme(Theme.of(context).primaryTextTheme),
         scaffoldBackgroundColor: Colors.white,
-        appBarTheme: AppBarTheme(
+        appBarTheme: const AppBarTheme(
           backgroundColor: Colors.white,
           surfaceTintColor: Colors.white,
         ),
@@ -38,7 +38,7 @@ class Portifolio extends StatelessWidget {
         outlinedButtonTheme: OutlinedButtonThemeData(
           style: OutlinedButton.styleFrom(
             shape: RoundedRectangleBorder(borderRadius: BorderRadiusGeometry.circular(5)),
-            side: BorderSide(color: kCorPrimaria, width: 2),
+            side: const BorderSide(color: kCorPrimaria, width: 2),
             overlayColor: Colors.transparent,
           ),
         ),
@@ -52,7 +52,7 @@ class Portifolio extends StatelessWidget {
           style: IconButton.styleFrom(overlayColor: Colors.transparent),
         ),
       ),
-      home: SelectionArea(child: PortifolioPage()),
+      home: const SelectionArea(child: PortifolioPage()),
     );
   }
 }
