@@ -18,5 +18,21 @@ class ProjetosController {
         'assets/projetos/blitz/dormitorio.jpg',
       ],
     ),
+    ProjetoModel(
+      tipo: 'Aplicativo',
+      titulo: 'Sea Adventure',
+      descricao:
+          'Feito em colaboração com a equipe de robótica da escola SESI Aparecida de Goiânia, é um aplicativo de conscientização da fauna e flora marinha, apresentando curiosidades, eventos, peixes exóticos, guias e divulgação de ONGs que abordam esses temas.',
+      tags: ['Flutter', 'Figma', 'Git', 'UX'],
+      images: [
+        'assets/projetos/blitz/menu.jpg',
+        'assets/projetos/blitz/dinamica.jpg',
+        'assets/projetos/blitz/respostas.jpg',
+        'assets/projetos/blitz/pergunta_respondida.jpg',
+        'assets/projetos/blitz/map.jpg',
+        'assets/projetos/blitz/historico_viabilizacao.jpg',
+        'assets/projetos/blitz/dormitorio.jpg',
+      ],
+    ),
   ];
 }

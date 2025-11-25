@@ -22,7 +22,7 @@ class PortifolioPage extends StatelessWidget {
               SliverToBoxAdapter(child: Gap(constraints.maxWidth > kLarguraMedia ? 70 : 60)),
               const SliverToBoxAdapter(child: Habilidades()),
               SliverToBoxAdapter(child: Gap(constraints.maxWidth > kLarguraMedia ? 70 : 60)),
-              //const SliverToBoxAdapter(child: Projetos()),
+              const SliverToBoxAdapter(child: Projetos()),
             ],
           );
         },
