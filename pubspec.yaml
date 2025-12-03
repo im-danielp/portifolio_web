@@ -27,6 +27,10 @@ flutter:
 
   assets:
     - assets/pdf/
-    - assets/projetos/blitz/
     - assets/sobre/
+    - assets/projetos/blitz/
+    - assets/projetos/bluecat_compras/
+    - assets/projetos/bluecat_gerenciador/
+    - assets/projetos/sea_adventure/
+    - assets/projetos/tela_vendas_datarey/
 

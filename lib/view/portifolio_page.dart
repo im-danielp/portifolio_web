@@ -3,7 +3,8 @@ import 'package:gap/gap.dart';
 import 'package:portifolio_web/view/header/header.dart';
 import 'package:portifolio_web/controller/constants.dart';
 import 'package:portifolio_web/view/sections/habilidades.dart';
-import 'package:portifolio_web/view/sections/projetos.dart';
+import 'package:portifolio_web/view/sections/projetos_aplicativos.dart';
+import 'package:portifolio_web/view/sections/projetos_web.dart';
 import 'package:portifolio_web/view/sections/sobre.dart';
 
 class PortifolioPage extends StatelessWidget {
@@ -22,7 +23,9 @@ class PortifolioPage extends StatelessWidget {
               SliverToBoxAdapter(child: Gap(constraints.maxWidth > kLarguraMedia ? 70 : 60)),
               const SliverToBoxAdapter(child: Habilidades()),
               SliverToBoxAdapter(child: Gap(constraints.maxWidth > kLarguraMedia ? 70 : 60)),
-              const SliverToBoxAdapter(child: Projetos()),
+              const SliverToBoxAdapter(child: ProjetosAplicativos()),
+              SliverToBoxAdapter(child: Gap(constraints.maxWidth > kLarguraMedia ? 70 : 60)),
+              const SliverToBoxAdapter(child: ProjetosWeb()),
             ],
           );
         },

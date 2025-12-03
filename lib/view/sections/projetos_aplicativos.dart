@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:portifolio_web/controller/projetos_controller.dart';
 import 'package:portifolio_web/model/projeto_model.dart';
 
-class Projetos extends StatefulWidget {
-  const Projetos({super.key});
+class ProjetosAplicativos extends StatefulWidget {
+  const ProjetosAplicativos({super.key});
 
   @override
-  State<Projetos> createState() => _ProjetosState();
+  State<ProjetosAplicativos> createState() => _ProjetosAplicativosState();
 }
 
-class _ProjetosState extends State<Projetos> {
+class _ProjetosAplicativosState extends State<ProjetosAplicativos> {
   late final List<PageController> _controllers;
   late final List<Timer> _timers;
   late final List _listaProjetos;
@@ -20,7 +20,7 @@ class _ProjetosState extends State<Projetos> {
   @override
   void initState() {
     super.initState();
-    _listaProjetos = ProjetosController.listaProjetos;
+    _listaProjetos = ProjetosController.listaProjetos.where((e) => e.tipo == 'Aplicativo').toList();
     _controllers = List.generate(_listaProjetos.length, (_) => PageController());
     _timers = List.generate(_listaProjetos.length, (i) {
       return Timer.periodic(const Duration(seconds: 5), (_) {
@@ -74,7 +74,7 @@ class _ProjetosState extends State<Projetos> {
                   final i = entry.key;
                   final ProjetoModel e = entry.value;
                   return Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 16),
+                    margin: const EdgeInsets.symmetric(horizontal: 24),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
                       border: Border.all(color: Colors.grey.shade300),
@@ -92,7 +92,9 @@ class _ProjetosState extends State<Projetos> {
                           child: PageView(
                             controller: _controllers[i],
                             scrollDirection: Axis.horizontal,
-                            children: e.images.map<Widget>((image) => Image.asset(image)).toList(),
+                            children: e.images
+                                .map<Widget>((image) => Image.asset(image, fit: .cover))
+                                .toList(),
                           ),
                         ),
                         // Textos.
@@ -137,7 +139,7 @@ class _ProjetosState extends State<Projetos> {
                                       ),
                                       backgroundColor: Colors.white,
                                       shape: RoundedRectangleBorder(
-                                        side: BorderSide(color: primaryColor, width: 1),
+                                        side: BorderSide(color: primaryColor, width: 1.2),
                                         borderRadius: BorderRadius.circular(6),
                                       ),
                                     ),
