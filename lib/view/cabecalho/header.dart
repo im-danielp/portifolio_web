@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 ///
 /// Cabeçalho apresentando as seções.
-class Header extends StatefulWidget {
-  const Header({super.key});
+class Cabecalho extends StatefulWidget {
+  const Cabecalho({super.key});
 
   @override
-  State<Header> createState() => _HeaderState();
+  State<Cabecalho> createState() => _CabecalhoState();
 }
 
-class _HeaderState extends State<Header> {
+class _CabecalhoState extends State<Cabecalho> {
   String selectedSection = 'Sobre';
   final List sections = ['Sobre', 'Habilidades', 'Projetos', 'Experiências'];
 
