@@ -48,7 +48,7 @@ class Sobre extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        'FullStack Developer',
+                        'Software Developer',
                         style: GoogleFonts.inter(
                           color: Theme.of(context).colorScheme.primary,
                           fontWeight: FontWeight.w900,

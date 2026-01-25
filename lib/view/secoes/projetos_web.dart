@@ -79,7 +79,7 @@ class _ProjetosWebState extends State<ProjetosWeb> {
                   children: [
                     // Imagens.
                     SizedBox(
-                      width: 540,
+                      width: 550,
                       height: 300,
                       child: Stack(
                         children: [
@@ -140,7 +140,7 @@ class _ProjetosWebState extends State<ProjetosWeb> {
                         alignment: .bottomCenter,
                         child: Container(
                           width: 500,
-                          padding: const EdgeInsets.only(bottom: 8),
+                          padding: const EdgeInsets.only(bottom: 18),
                           child: FilledButton.icon(
                             icon: const Icon(Icons.open_in_new_rounded),
                             label: const Text(

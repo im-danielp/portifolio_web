@@ -16,7 +16,7 @@ class ProjetosController {
         'assets/projetos/blitz/historico_viabilizacao.jpg',
         'assets/projetos/blitz/dormitorio.jpg',
       ],
-      tags: ['Flutter', 'SQFlite', 'API Reset', 'SQL', 'Figma', 'Git'],
+      tags: ['Flutter', 'SQFlite', 'API Rest', 'SQL', 'Figma', 'Git'],
     ),
 
     ProjetoModel(
@@ -33,7 +33,7 @@ class ProjetosController {
         'assets/projetos/blitz/historico_viabilizacao.jpg',
         'assets/projetos/blitz/dormitorio.jpg',
       ],
-      tags: ['Flutter', 'SQFlite', 'API Reset', 'SQL', 'Figma', 'Git'],
+      tags: ['Flutter', 'SQFlite', 'API Rest', 'SQL', 'Figma', 'Git'],
     ),
 
     ProjetoModel(

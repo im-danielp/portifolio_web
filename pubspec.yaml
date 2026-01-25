@@ -15,6 +15,7 @@ dependencies:
   gap: ^3.0.1
   url_launcher: ^6.3.2
   web: ^1.1.1
+  provider: ^6.1.5+1
 
 dev_dependencies:
   flutter_test:
@@ -30,7 +31,7 @@ flutter:
     - assets/sobre/
     - assets/projetos/blitz/
     - assets/projetos/bluecat_compras/
-    - assets/projetos/bluecat_gerenciador/
-    - assets/projetos/sea_adventure/
-    - assets/projetos/tela_vendas_datarey/
+    # - assets/projetos/bluecat_gerenciador/
+    # - assets/projetos/sea_adventure/
+    # - assets/projetos/tela_vendas_datarey/
 
