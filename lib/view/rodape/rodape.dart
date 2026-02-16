@@ -23,6 +23,7 @@ class Rodape extends StatelessWidget {
               const Gap(14),
               const Text(
                 'Estou sempre aberto a discutir novos projetos, ideias criativas ou oportunidades para fazer parte da sua visão. Entre em contato!',
+                textAlign: .center,
                 style: TextStyle(color: Colors.white),
               ),
               const Gap(24),
