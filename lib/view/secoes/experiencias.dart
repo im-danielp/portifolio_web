@@ -18,13 +18,13 @@ class Experiencias extends StatelessWidget {
 
     return Container(
       color: const Color.fromARGB(255, 250, 250, 250),
-      padding: EdgeInsets.symmetric(horizontal: constraints.maxWidth * 0.25),
       child: Column(
         children: [
           const Gap(54),
           const Text('Experiências', style: TextStyle(fontWeight: FontWeight.bold)),
           const Text(
             'Minha jornada profissional no mundo da tecnologia e desenvolvimento de software.',
+            textAlign: .center,
           ),
           const Gap(32),
 
@@ -32,7 +32,7 @@ class Experiencias extends StatelessWidget {
           ...listaHabilidades.map(
             (e) => Container(
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-              margin: const EdgeInsets.only(bottom: 24),
+              margin: EdgeInsets.symmetric(horizontal: constraints.maxWidth * 0.25, vertical: 12),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10),

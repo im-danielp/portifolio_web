@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:web/web.dart' as web;
-
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:portifolio_web/controller/projetos_controller.dart';
@@ -18,6 +17,7 @@ class _ProjetosWebState extends State<ProjetosWeb> {
   late final List<Timer> _timers;
   late final List _listaProjetos;
   final listaProjetos = ProjetosController.listaProjetos;
+  final functions = ProjetosController();
 
   @override
   void initState() {
@@ -78,40 +78,55 @@ class _ProjetosWebState extends State<ProjetosWeb> {
                   mainAxisSize: .max,
                   children: [
                     // Imagens.
-                    SizedBox(
-                      width: 550,
-                      height: 300,
-                      child: Stack(
-                        children: [
-                          PageView(
-                            controller: _controllers[i],
-                            scrollDirection: Axis.horizontal,
-                            children: e.images
-                                .map<Widget>((image) => Image.asset(image, fit: .cover))
-                                .toList(),
-                          ),
-                          Positioned(
-                            bottom: 0,
-                            right: 0,
-                            child: Container(
-                              padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 8),
-                              decoration: const BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.only(topLeft: Radius.circular(5)),
+                    InkWell(
+                      onTap: () => functions.visualizaFotos(context, e.images),
+                      child: SizedBox(
+                        width: 550,
+                        height: 300,
+                        child: Tooltip(
+                          message: 'Clique para expandir',
+                          child: Stack(
+                            children: [
+                              PageView(
+                                controller: _controllers[i],
+                                scrollDirection: Axis.horizontal,
+                                children: e.images
+                                    .map<Widget>((image) => Image.asset(image, fit: .cover))
+                                    .toList(),
                               ),
-                              child: Text(
-                                e.tipo,
-                                textAlign: .right,
-                                style: TextStyle(fontSize: 12, color: primaryColor),
+                              const Positioned.fill(
+                                child: Center(
+                                  child: Icon(
+                                    Icons.zoom_in,
+                                    color: Color.fromARGB(66, 105, 42, 230),
+                                    size: 40,
+                                  ),
+                                ),
                               ),
-                            ),
+                              Positioned(
+                                bottom: 0,
+                                right: 0,
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 8),
+                                  decoration: const BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.only(topLeft: Radius.circular(5)),
+                                  ),
+                                  child: Text(
+                                    e.tipo,
+                                    textAlign: .right,
+                                    style: TextStyle(fontSize: 12, color: primaryColor),
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                decoration: BoxDecoration(
+                                  border: Border(bottom: BorderSide(color: Colors.grey.shade300)),
+                                ),
+                              ),
+                            ],
                           ),
-                          Container(
-                            decoration: BoxDecoration(
-                              border: Border(bottom: BorderSide(color: Colors.grey.shade300)),
-                            ),
-                          ),
-                        ],
+                        ),
                       ),
                     ),
 

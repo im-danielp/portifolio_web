@@ -62,6 +62,7 @@ class Rodape extends StatelessWidget {
           child: const Center(
             child: Text(
               '© 2025 Daniel Pacheco Ferreira. Todos os direitos reservados.',
+              textAlign: .center,
               style: TextStyle(color: Colors.white38),
             ),
           ),
