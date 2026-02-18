@@ -1,5 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:portifolio_web/controller/constants.dart';
+import 'package:portifolio_web/controller/sobre_controller.dart';
 
 class Cabecalho extends StatefulWidget implements PreferredSizeWidget {
   const Cabecalho({super.key});
@@ -14,11 +16,12 @@ class Cabecalho extends StatefulWidget implements PreferredSizeWidget {
 class _CabecalhoState extends State<Cabecalho> {
   String selectedSection = 'Sobre';
   final List<String> sections = ['Sobre', 'Habilidades', 'Projetos', 'Experiências'];
+  final controller = SobreController();
 
   @override
   Widget build(BuildContext context) {
     final double width = MediaQuery.of(context).size.width;
-    final bool isMobile = width < 750;
+    final bool isMobile = width < kLarguraMobile;
 
     return AppBar(
       backgroundColor: Colors.white.withValues(alpha: 0.7),
@@ -57,7 +60,7 @@ class _CabecalhoState extends State<Cabecalho> {
           child: Padding(
             padding: const EdgeInsets.only(left: 24, right: 24),
             child: FilledButton(
-              onPressed: () {},
+              onPressed: () => controller.abrirPagina(3),
               style: FilledButton.styleFrom(
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
               ),

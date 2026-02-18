@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:portifolio_web/controller/constants.dart';
+import 'package:portifolio_web/controller/sobre_controller.dart';
 
 class Rodape extends StatelessWidget {
   const Rodape({super.key});
@@ -8,11 +10,14 @@ class Rodape extends StatelessWidget {
   Widget build(BuildContext context) {
     final primaryColor = Theme.of(context).primaryColor;
     final secondaryColor = Theme.of(context).colorScheme.secondary;
+    final size = MediaQuery.of(context).size;
+    final controller = SobreController();
+    final bool isMobile = size.width < kLarguraMobile;
 
     return Column(
       children: [
         Container(
-          padding: const EdgeInsets.all(80),
+          padding: EdgeInsets.all(isMobile ? 30 : 80),
           color: primaryColor,
           child: Column(
             children: [
@@ -37,7 +42,7 @@ class Rodape extends StatelessWidget {
                       foregroundColor: Colors.black,
                     ),
                     icon: const Icon(Icons.email_outlined),
-                    onPressed: () {},
+                    onPressed: () => controller.copiarEmail(context, size.width),
                     label: const Text('E-mail'),
                   ),
                   FilledButton.icon(
@@ -49,8 +54,8 @@ class Rodape extends StatelessWidget {
                       flipX: true,
                       child: const Icon(Icons.phone_enabled_outlined),
                     ),
-                    onPressed: () {},
-                    label: const Text('E-mail'),
+                    onPressed: () => controller.abrirPagina(3),
+                    label: const Text('Telefone'),
                   ),
                 ],
               ),
