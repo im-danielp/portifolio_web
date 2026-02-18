@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:portifolio_web/controller/experiencias_controller.dart';
 
-/// Experiências profissionais.
 class Experiencias extends StatelessWidget {
   final BoxConstraints constraints;
 
@@ -15,16 +14,12 @@ class Experiencias extends StatelessWidget {
   Widget build(BuildContext context) {
     final listaHabilidades = ExperienciasController.listaExperiencias;
     final primaryColor = Theme.of(context).primaryColor;
-
-    // Define o breakpoint para mobile
     final isMobile = constraints.maxWidth < 700;
-
-    // Define a margem horizontal baseada no dispositivo
     final double horizontalMargin = isMobile ? 16.0 : constraints.maxWidth * 0.25;
 
     return Container(
       color: const Color.fromARGB(255, 250, 250, 250),
-      width: constraints.maxWidth, // Garante que o container ocupe a largura
+      width: constraints.maxWidth,
       child: Column(
         children: [
           const Gap(54),
@@ -42,7 +37,6 @@ class Experiencias extends StatelessWidget {
           ...listaHabilidades.map(
             (e) => Container(
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-              // APLICAÇÃO DA LÓGICA RESPONSIVA AQUI
               margin: EdgeInsets.symmetric(horizontal: horizontalMargin, vertical: 12),
               decoration: BoxDecoration(
                 color: Colors.white,

@@ -190,8 +190,10 @@ class _ProjetosAplicativosState extends State<ProjetosAplicativos> {
           const SizedBox(height: 8),
           Text(
             projeto.titulo,
-            textAlign: TextAlign.center,
-            style: const TextStyle(fontWeight: FontWeight.bold),
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 18,
+            ),
           ),
           const SizedBox(height: 12),
           Expanded(
