@@ -12,7 +12,7 @@ class Sobre extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = SobreController();
     final maxWidth = constraints.maxWidth;
-    final bool isMobile = maxWidth < 850;
+    final bool isMobile = constraints.maxWidth < kLarguraMobile;
 
     return Container(
       padding: EdgeInsets.symmetric(
@@ -100,9 +100,10 @@ class Sobre extends StatelessWidget {
       children: [
         _socialInkWell('assets/sobre/github_logo.png', () => controller.abrirPagina(0)),
         _socialInkWell('assets/sobre/linkedin_logo.jpg', () => controller.abrirPagina(1)),
-        IconButton(
-          onPressed: () => controller.copiarEmail(context, constraints.maxWidth),
-          icon: const Icon(Icons.email, size: 28),
+        InkWell(
+          onTap: () => controller.copiarEmail(context, constraints.maxWidth),
+          hoverColor: Colors.transparent,
+          child: const Icon(Icons.email, size: 28),
         ),
       ],
     );
@@ -129,13 +130,13 @@ class Sobre extends StatelessWidget {
           icon: const Icon(Icons.phone),
           label: const Text('Entrar em contato'),
           onPressed: () => controller.abrirPagina(3),
-          style: FilledButton.styleFrom(padding: const EdgeInsets.all(20)),
+          style: FilledButton.styleFrom(padding: const EdgeInsets.all(16)),
         ),
         OutlinedButton.icon(
           icon: const Icon(Icons.assignment_ind_outlined),
           label: const Text('Ver currículo'),
           onPressed: () => controller.abrirCurriculo(),
-          style: OutlinedButton.styleFrom(padding: const EdgeInsets.all(20)),
+          style: OutlinedButton.styleFrom(padding: const EdgeInsets.all(16)),
         ),
       ],
     );

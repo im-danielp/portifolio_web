@@ -12,7 +12,6 @@ class SobreController {
       'mailto:danielpfcont@gmail.com?subject=Entrevista%20de%20emprego',
       'https://api.whatsapp.com/send/?phone=%2B5562992980263&text=Ol%C3%A1+Daniel%21+Vi+seu+curr%C3%ADculo+e+gostaria+de+marcar+uma+entrevista+de+emprego+com+voc%C3%AA&type=phone_number&app_absent=0',
     ];
-
     web.window.open(urls[index], '_blank');
   }
 
@@ -22,18 +21,30 @@ class SobreController {
     if (!context.mounted) return;
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        width: 700,
+      SnackBar(
+        showCloseIcon: true,
         backgroundColor: Colors.green,
         behavior: SnackBarBehavior.floating,
-        content: Row(
-          spacing: 16,
+        margin: EdgeInsets.symmetric(
+          horizontal: MediaQuery.of(context).size.width > 800
+              ? (MediaQuery.of(context).size.width - 700) / 2
+              : 16,
+          vertical: 20,
+        ),
+        content: const Row(
+          mainAxisSize: MainAxisSize.min,
           children: [
             Icon(Icons.check_circle_sharp, color: Colors.white),
-            Text('E-mail danielpfcont@gmail.com copiado para área de tansferência'),
+            SizedBox(width: 16),
+            Flexible(
+              child: Text(
+                'E-mail danielpfcont@gmail.com copiado para área de transferência',
+                overflow: TextOverflow.ellipsis,
+                maxLines: 2,
+              ),
+            ),
           ],
         ),
-        showCloseIcon: true,
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:portifolio_web/controller/constants.dart';
 import 'package:portifolio_web/controller/projetos_controller.dart';
 import 'package:portifolio_web/model/projeto_model.dart';
 
@@ -64,7 +65,7 @@ class _ProjetosAplicativosState extends State<ProjetosAplicativos> {
   Widget build(BuildContext context) {
     final primaryColor = Theme.of(context).primaryColor;
     final size = MediaQuery.of(context).size;
-    final bool isMobile = size.width < 700;
+    final bool isMobile = size.width < kLarguraMobile;
 
     return Column(
       children: [

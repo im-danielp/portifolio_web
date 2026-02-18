@@ -1,8 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 
-///
-/// Cabeçalho apresentando as seções.
 class Cabecalho extends StatefulWidget implements PreferredSizeWidget {
   const Cabecalho({super.key});
 
@@ -15,58 +13,56 @@ class Cabecalho extends StatefulWidget implements PreferredSizeWidget {
 
 class _CabecalhoState extends State<Cabecalho> {
   String selectedSection = 'Sobre';
-  final List sections = ['Sobre', 'Habilidades', 'Projetos', 'Experiências'];
+  final List<String> sections = ['Sobre', 'Habilidades', 'Projetos', 'Experiências'];
 
   @override
   Widget build(BuildContext context) {
+    final double width = MediaQuery.of(context).size.width;
+    final bool isMobile = width < 750;
+
     return AppBar(
-      backgroundColor: Colors.transparent,
+      backgroundColor: Colors.white.withValues(alpha: 0.7),
       scrolledUnderElevation: 0,
       elevation: 0,
+      centerTitle: !isMobile,
       flexibleSpace: ClipRRect(
         child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-          child: Container(),
+          filter: ImageFilter.blur(sigmaX: 12, sigmaY: 12),
+          child: Container(color: Colors.transparent),
         ),
       ),
       title: Text(
-        '</daniel>',
+        '</daniel.pacheco>',
         style: TextStyle(
-          fontSize: 16,
+          fontSize: 18,
           fontWeight: FontWeight.bold,
           color: Theme.of(context).primaryColor,
         ),
       ),
-      actionsPadding: const EdgeInsets.symmetric(horizontal: 24),
       actions: [
-        // IconButton(
-        //   icon: const Icon(Icons.dark_mode),
-        //   onPressed: () {
-        //     final appThemes = context.read<AppThemes>();
-        //     appThemes.mudarTema();
-        //   },
-        // ),
-        ...sections.map(
-          (section) => TextButton(
-            onPressed: () {
-              setState(() => selectedSection = section);
-            },
-            child: Padding(
-              padding: const EdgeInsets.only(left: 18),
-              child: Text(
-                section,
-                style: TextStyle(
-                  color: selectedSection == section ? Theme.of(context).primaryColor : null,
+        Visibility(
+          visible: isMobile,
+          replacement: Padding(
+            padding: const EdgeInsets.only(left: 24, right: 24),
+            child: Center(
+              child: FilledButton(
+                onPressed: () {},
+                style: FilledButton.styleFrom(
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                 ),
+                child: const Text('Contato'),
               ),
             ),
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 18),
-          child: FilledButton(
-            onPressed: () {},
-            child: const Text('Contato'),
+          child: Padding(
+            padding: const EdgeInsets.only(left: 24, right: 24),
+            child: FilledButton(
+              onPressed: () {},
+              style: FilledButton.styleFrom(
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+              ),
+              child: const Text('Contato'),
+            ),
           ),
         ),
       ],

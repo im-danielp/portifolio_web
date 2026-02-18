@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:portifolio_web/controller/constants.dart';
 import 'package:web/web.dart' as web;
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -62,7 +63,7 @@ class _ProjetosWebState extends State<ProjetosWeb> {
     final primaryColor = Theme.of(context).primaryColor;
     return LayoutBuilder(
       builder: (context, constraints) {
-        final bool isMobile = constraints.maxWidth < 720;
+        final bool isMobile = constraints.maxWidth < kLarguraMobile;
         final double containerHeight = isMobile ? 580 : 550;
 
         return SizedBox(

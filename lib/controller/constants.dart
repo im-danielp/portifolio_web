@@ -16,6 +16,7 @@ const Map<int, Color> kCorPrimariaSwatch = {
 };
 const Color kCorSecundaria = Color(0xFFFFCC00);
 
+const int kLarguraMobile = 720;
 const int kLarguraGrande = 1920;
 const int kAlturaGrande = 1080;
 const int kLarguraMedia = 1536;

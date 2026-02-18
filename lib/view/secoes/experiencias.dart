@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:portifolio_web/controller/constants.dart';
 import 'package:portifolio_web/controller/experiencias_controller.dart';
 
 class Experiencias extends StatelessWidget {
@@ -14,7 +15,7 @@ class Experiencias extends StatelessWidget {
   Widget build(BuildContext context) {
     final listaHabilidades = ExperienciasController.listaExperiencias;
     final primaryColor = Theme.of(context).primaryColor;
-    final isMobile = constraints.maxWidth < 700;
+    final isMobile = constraints.maxWidth < kLarguraMobile;
     final double horizontalMargin = isMobile ? 16.0 : constraints.maxWidth * 0.25;
 
     return Container(
