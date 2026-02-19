@@ -1,3 +1,6 @@
+// ignore_for_file: unused_field
+import 'dart:async';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:portifolio_web/controller/projetos_controller.dart';
 import 'package:portifolio_web/model/projeto_model.dart';
@@ -18,21 +21,36 @@ class ProjetosAplicativos extends StatefulWidget {
 
 class _ProjetosAplicativosState extends State<ProjetosAplicativos> {
   late final List<PageController> _controllers;
-  late final List<ProjetoModel> _listaProjetos;
+  late final List _listaProjetos;
   final functions = ProjetosController();
 
   @override
   void initState() {
     super.initState();
     _listaProjetos = ProjetosController.listaProjetos
-        .where((e) => e.tipo == 'Aplicativo')
-        .cast<ProjetoModel>()
+        .where((e) => 'Aplicativo'.contains(e.tipo))
         .toList();
-    _controllers = List.generate(_listaProjetos.length, (_) => PageController());
-    _initTimers();
-  }
 
-  void _initTimers() {}
+    _controllers = List.generate(_listaProjetos.length, (_) => PageController());
+
+    List.generate(_listaProjetos.length, (i) {
+      return Timer.periodic(const Duration(seconds: 5), (_) {
+        if (!mounted) return;
+        final controller = _controllers[i];
+        final images = _listaProjetos[i].images as List;
+
+        if (!controller.hasClients || images.isEmpty) return;
+        final current = (controller.page ?? controller.initialPage).round();
+        final next = (current + 1) % images.length;
+
+        controller.animateToPage(
+          next,
+          duration: const Duration(milliseconds: 400),
+          curve: Curves.easeInOut,
+        );
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,45 +71,54 @@ class _ProjetosAplicativosState extends State<ProjetosAplicativos> {
         const SizedBox(height: 24),
         SizedBox(
           height: isMobile ? 650 : 550,
-          child: ListView.builder(
-            padding: EdgeInsets.symmetric(horizontal: isMobile ? 4 : 20),
-            scrollDirection: Axis.horizontal,
-            itemCount: _listaProjetos.length,
-            itemBuilder: (context, index) {
-              final projeto = _listaProjetos[index];
-              return Container(
-                width: isMobile ? widget.size.width * 0.85 : 550,
-                margin: const EdgeInsets.symmetric(horizontal: 11, vertical: 8),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: Colors.grey.shade300),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withValues(alpha: 0.05),
-                      blurRadius: 10,
-                      offset: const Offset(0, 5),
-                    ),
-                  ],
-                ),
-                child: Flex(
-                  direction: isMobile ? Axis.vertical : Axis.horizontal,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    // Área da Imagem
-                    Expanded(
-                      flex: isMobile ? 3 : 2,
-                      child: constroiImagens(projeto, index, isMobile, primaryColor),
-                    ),
-                    // Área de Conteúdo
-                    Expanded(
-                      flex: isMobile ? 4 : 3,
-                      child: constroiTextos(projeto, primaryColor, isMobile),
-                    ),
-                  ],
-                ),
-              );
-            },
+          child: ScrollConfiguration(
+            behavior: ScrollConfiguration.of(context).copyWith(
+              dragDevices: {
+                PointerDeviceKind.touch,
+                PointerDeviceKind.mouse,
+                PointerDeviceKind.trackpad,
+              },
+            ),
+            child: ListView.builder(
+              padding: EdgeInsets.symmetric(horizontal: isMobile ? 4 : 20),
+              scrollDirection: Axis.horizontal,
+              itemCount: _listaProjetos.length,
+              itemBuilder: (context, index) {
+                final projeto = _listaProjetos[index];
+                return Container(
+                  width: isMobile ? widget.size.width * 0.85 : 550,
+                  margin: const EdgeInsets.symmetric(horizontal: 11, vertical: 8),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(color: Colors.grey.shade300),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withValues(alpha: 0.05),
+                        blurRadius: 10,
+                        offset: const Offset(0, 5),
+                      ),
+                    ],
+                  ),
+                  child: Flex(
+                    direction: isMobile ? Axis.vertical : Axis.horizontal,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      // Área da Imagem
+                      Expanded(
+                        flex: isMobile ? 3 : 2,
+                        child: constroiImagens(projeto, index, isMobile, primaryColor),
+                      ),
+                      // Área de Conteúdo
+                      Expanded(
+                        flex: isMobile ? 4 : 3,
+                        child: constroiTextos(projeto, primaryColor, isMobile),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
           ),
         ),
       ],

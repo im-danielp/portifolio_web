@@ -15,10 +15,7 @@ class Sobre extends StatelessWidget {
     final bool isMobile = size.width < kLarguraMobile;
 
     return Container(
-      padding: EdgeInsets.symmetric(
-        horizontal: isMobile ? 20 : 40,
-        vertical: 20,
-      ),
+      padding: EdgeInsets.symmetric(horizontal: isMobile ? 20 : 40, vertical: 20),
       height: isMobile ? null : (maxWidth > kLarguraMedia ? 450 : 400),
       child: Flex(
         direction: isMobile ? Axis.vertical : Axis.horizontal,
@@ -47,7 +44,7 @@ class Sobre extends StatelessWidget {
                   _buildHeader(context, isMobile),
                   const SizedBox(height: 15),
                   Text(
-                    'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s.',
+                    'Desenvolvedor dedicado a construir aplicações robustas e orientadas a dados. Com sólido domínio em modelagem de dados e arquitetura de sistemas, foco na entrega de produtos que equilibram performance técnica com usabilidade. Experiência no ciclo completo de desenvolvimento, garantindo soluções otimizadas para ambientes de alta demanda.',
                     textAlign: isMobile ? TextAlign.center : TextAlign.justify,
                     style: const TextStyle(fontSize: 16, height: 1.5),
                   ),
@@ -103,6 +100,8 @@ class Sobre extends StatelessWidget {
         InkWell(
           onTap: () => controller.copiarEmail(context, size.width),
           hoverColor: Colors.transparent,
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
           child: const Icon(Icons.email, size: 28),
         ),
       ],

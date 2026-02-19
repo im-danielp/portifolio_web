@@ -65,12 +65,31 @@ class Rodape extends StatelessWidget {
         Container(
           padding: const EdgeInsets.all(32),
           color: const Color.fromRGBO(68, 21, 161, 1),
-          child: const Center(
-            child: Text(
-              '© 2025 Daniel Pacheco Ferreira. Todos os direitos reservados.',
-              textAlign: .center,
-              style: TextStyle(color: Colors.white38),
-            ),
+          child: const Column(
+            spacing: 12,
+            children: [
+              Text(
+                '© 2025 Daniel Pacheco Ferreira. Todos os direitos reservados.',
+                textAlign: .center,
+                style: TextStyle(color: Colors.white38),
+              ),
+              Row(
+                mainAxisAlignment: .center,
+                crossAxisAlignment: .center,
+                children: [
+                  Text(
+                    'Feito com Flutter ',
+                    textAlign: .center,
+                    style: TextStyle(color: Colors.white38, fontSize: 12),
+                  ),
+                  Icon(
+                    Icons.flutter_dash,
+                    color: Colors.white38,
+                    size: 16,
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ],

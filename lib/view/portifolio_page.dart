@@ -24,7 +24,7 @@ class _PortifolioPageState extends State<PortifolioPage> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final bool isMobile = size.width < kLarguraMobile;
-    final double larguraGap = size.width < kLarguraMobile ? 70 : 60;
+    final double larguraGap = isMobile ? 70 : 60;
 
     return Scaffold(
       appBar: const Cabecalho(),
@@ -39,7 +39,7 @@ class _PortifolioPageState extends State<PortifolioPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Gap(larguraGap),
+              Gap(isMobile ? 20 : 60),
               Sobre(size: size),
               Gap(larguraGap),
               const Habilidades(),

@@ -31,8 +31,10 @@ flutter:
     - assets/pdf/
     - assets/sobre/
     - assets/projetos/blitz/
+    - assets/projetos/sea_adventure/
     - assets/projetos/bluecat_compras/
-    # - assets/projetos/bluecat_gerenciador/
-    # - assets/projetos/sea_adventure/
-    # - assets/projetos/tela_vendas_datarey/
-
+    - assets/projetos/chat_online/
+    - assets/projetos/datarey_mobile/
+    - assets/projetos/bluecat_dashboard/
+    - assets/projetos/datafarma_venda/
+    - assets/projetos/portifolio/
