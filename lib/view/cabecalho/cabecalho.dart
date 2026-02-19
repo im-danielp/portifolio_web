@@ -31,7 +31,7 @@ class _CabecalhoState extends State<Cabecalho> {
       flexibleSpace: ClipRRect(
         child: BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 12, sigmaY: 12),
-          child: Container(color: Colors.transparent),
+          child: Container(color: kCorPrimaria.withValues(alpha: 0.05)),
         ),
       ),
       title: Text(
@@ -49,7 +49,7 @@ class _CabecalhoState extends State<Cabecalho> {
             padding: const EdgeInsets.only(left: 24, right: 24),
             child: Center(
               child: FilledButton(
-                onPressed: () {},
+                onPressed: () => controller.abrirPagina(3),
                 style: FilledButton.styleFrom(
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                 ),

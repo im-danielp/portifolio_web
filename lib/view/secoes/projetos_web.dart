@@ -1,5 +1,3 @@
-import 'dart:async';
-import 'package:portifolio_web/controller/constants.dart';
 import 'package:web/web.dart' as web;
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -7,7 +5,14 @@ import 'package:portifolio_web/controller/projetos_controller.dart';
 import 'package:portifolio_web/model/projeto_model.dart';
 
 class ProjetosWeb extends StatefulWidget {
-  const ProjetosWeb({super.key});
+  final bool isMobile;
+  final Size size;
+
+  const ProjetosWeb({
+    super.key,
+    required this.isMobile,
+    required this.size,
+  });
 
   @override
   State<ProjetosWeb> createState() => _ProjetosWebState();
@@ -15,7 +20,6 @@ class ProjetosWeb extends StatefulWidget {
 
 class _ProjetosWebState extends State<ProjetosWeb> {
   late final List<PageController> _controllers;
-  late final List<Timer> _timers;
   late final List _listaProjetos;
   final functions = ProjetosController();
 
@@ -25,56 +29,22 @@ class _ProjetosWebState extends State<ProjetosWeb> {
     _listaProjetos = ProjetosController.listaProjetos
         .where((e) => ['Web', 'Design'].contains(e.tipo))
         .toList();
-
     _controllers = List.generate(_listaProjetos.length, (_) => PageController());
-
-    _timers = List.generate(_listaProjetos.length, (i) {
-      return Timer.periodic(const Duration(seconds: 5), (_) {
-        if (!mounted) return;
-        final controller = _controllers[i];
-        final images = _listaProjetos[i].images as List;
-
-        if (!controller.hasClients || images.isEmpty) return;
-        final current = (controller.page ?? controller.initialPage).round();
-        final next = (current + 1) % images.length;
-
-        controller.animateToPage(
-          next,
-          duration: const Duration(milliseconds: 400),
-          curve: Curves.easeInOut,
-        );
-      });
-    });
-  }
-
-  @override
-  void dispose() {
-    for (final t in _timers) {
-      t.cancel();
-    }
-    for (final c in _controllers) {
-      c.dispose();
-    }
-    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     final primaryColor = Theme.of(context).primaryColor;
+    final bool isMobile = widget.isMobile;
+
     return LayoutBuilder(
       builder: (context, constraints) {
-        final bool isMobile = constraints.maxWidth < kLarguraMobile;
-        final double containerHeight = isMobile ? 580 : 550;
-
         return SizedBox(
-          height: containerHeight,
+          height: isMobile ? 580 : 550,
           width: double.infinity,
           child: ListView.builder(
             physics: const BouncingScrollPhysics(),
-            padding: EdgeInsets.symmetric(
-              horizontal: isMobile ? 16 : 32,
-              vertical: 10,
-            ),
+            padding: EdgeInsets.symmetric(horizontal: isMobile ? 16 : 32, vertical: 10),
             scrollDirection: Axis.horizontal,
             itemCount: _listaProjetos.length,
             itemBuilder: (context, i) {

@@ -4,15 +4,15 @@ import 'package:portifolio_web/controller/constants.dart';
 import 'package:portifolio_web/controller/sobre_controller.dart';
 
 class Sobre extends StatelessWidget {
-  final BoxConstraints constraints;
+  final Size size;
 
-  const Sobre({super.key, required this.constraints});
+  const Sobre({super.key, required this.size});
 
   @override
   Widget build(BuildContext context) {
     final controller = SobreController();
-    final maxWidth = constraints.maxWidth;
-    final bool isMobile = constraints.maxWidth < kLarguraMobile;
+    final maxWidth = size.width;
+    final bool isMobile = size.width < kLarguraMobile;
 
     return Container(
       padding: EdgeInsets.symmetric(
@@ -101,7 +101,7 @@ class Sobre extends StatelessWidget {
         _socialInkWell('assets/sobre/github_logo.png', () => controller.abrirPagina(0)),
         _socialInkWell('assets/sobre/linkedin_logo.jpg', () => controller.abrirPagina(1)),
         InkWell(
-          onTap: () => controller.copiarEmail(context, constraints.maxWidth),
+          onTap: () => controller.copiarEmail(context, size.width),
           hoverColor: Colors.transparent,
           child: const Icon(Icons.email, size: 28),
         ),

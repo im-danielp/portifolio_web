@@ -4,23 +4,20 @@ import 'package:portifolio_web/controller/constants.dart';
 import 'package:portifolio_web/controller/experiencias_controller.dart';
 
 class Experiencias extends StatelessWidget {
-  final BoxConstraints constraints;
+  final Size size;
 
-  const Experiencias({
-    super.key,
-    required this.constraints,
-  });
+  const Experiencias({super.key, required this.size});
 
   @override
   Widget build(BuildContext context) {
     final listaHabilidades = ExperienciasController.listaExperiencias;
     final primaryColor = Theme.of(context).primaryColor;
-    final isMobile = constraints.maxWidth < kLarguraMobile;
-    final double horizontalMargin = isMobile ? 16.0 : constraints.maxWidth * 0.25;
+    final isMobile = size.width < kLarguraMobile;
+    final double horizontalMargin = isMobile ? 16.0 : size.width * 0.25;
 
     return Container(
       color: const Color.fromARGB(255, 250, 250, 250),
-      width: constraints.maxWidth,
+      width: size.width,
       child: Column(
         children: [
           const Gap(54),

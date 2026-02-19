@@ -1,11 +1,16 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:portifolio_web/controller/constants.dart';
 import 'package:portifolio_web/controller/projetos_controller.dart';
 import 'package:portifolio_web/model/projeto_model.dart';
 
 class ProjetosAplicativos extends StatefulWidget {
-  const ProjetosAplicativos({super.key});
+  final bool isMobile;
+  final Size size;
+
+  const ProjetosAplicativos({
+    super.key,
+    required this.isMobile,
+    required this.size,
+  });
 
   @override
   State<ProjetosAplicativos> createState() => _ProjetosAplicativosState();
@@ -13,7 +18,6 @@ class ProjetosAplicativos extends StatefulWidget {
 
 class _ProjetosAplicativosState extends State<ProjetosAplicativos> {
   late final List<PageController> _controllers;
-  late final List<Timer> _timers;
   late final List<ProjetoModel> _listaProjetos;
   final functions = ProjetosController();
 
@@ -24,48 +28,16 @@ class _ProjetosAplicativosState extends State<ProjetosAplicativos> {
         .where((e) => e.tipo == 'Aplicativo')
         .cast<ProjetoModel>()
         .toList();
-
     _controllers = List.generate(_listaProjetos.length, (_) => PageController());
-
     _initTimers();
   }
 
-  void _initTimers() {
-    _timers = List.generate(_listaProjetos.length, (i) {
-      return Timer.periodic(const Duration(seconds: 5), (_) {
-        if (!mounted) return;
-        final controller = _controllers[i];
-        final images = _listaProjetos[i].images;
-        if (!controller.hasClients || images.isEmpty) return;
-
-        final current = (controller.page ?? 0).round();
-        final next = (current + 1) % images.length;
-
-        controller.animateToPage(
-          next,
-          duration: const Duration(milliseconds: 400),
-          curve: Curves.easeInOut,
-        );
-      });
-    });
-  }
-
-  @override
-  void dispose() {
-    for (var t in _timers) {
-      t.cancel();
-    }
-    for (var c in _controllers) {
-      c.dispose();
-    }
-    super.dispose();
-  }
+  void _initTimers() {}
 
   @override
   Widget build(BuildContext context) {
     final primaryColor = Theme.of(context).primaryColor;
-    final size = MediaQuery.of(context).size;
-    final bool isMobile = size.width < kLarguraMobile;
+    final bool isMobile = widget.isMobile;
 
     return Column(
       children: [
@@ -88,7 +60,7 @@ class _ProjetosAplicativosState extends State<ProjetosAplicativos> {
             itemBuilder: (context, index) {
               final projeto = _listaProjetos[index];
               return Container(
-                width: isMobile ? size.width * 0.85 : 550,
+                width: isMobile ? widget.size.width * 0.85 : 550,
                 margin: const EdgeInsets.symmetric(horizontal: 11, vertical: 8),
                 decoration: BoxDecoration(
                   color: Colors.white,
