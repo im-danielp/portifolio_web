@@ -54,7 +54,7 @@ class Experiencias extends StatelessWidget {
                   Text(
                     e.descricao,
                     style: const TextStyle(height: 1.4),
-                    textAlign: isMobile ? TextAlign.justify : TextAlign.start,
+                    textAlign: isMobile ? TextAlign.start : TextAlign.start,
                   ),
                   const Gap(25),
 
