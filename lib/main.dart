@@ -23,6 +23,7 @@ class Portifolio extends StatelessWidget {
       listenable: appThemes,
       builder: (context, _) {
         return MaterialApp(
+          title: 'Daniel Pacheco Ferreira',
           debugShowCheckedModeBanner: false,
           theme: AppThemes.light,
           darkTheme: AppThemes.dark,

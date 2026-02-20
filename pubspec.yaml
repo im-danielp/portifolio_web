@@ -17,6 +17,7 @@ dependencies:
   web: ^1.1.1
   provider: ^6.1.5+1
   web_smooth_scroll: ^2.0.0
+  flutter_launcher_icons: ^0.14.4
 
 dev_dependencies:
   flutter_test:
@@ -38,3 +39,4 @@ flutter:
     - assets/projetos/bluecat_dashboard/
     - assets/projetos/datafarma_venda/
     - assets/projetos/portifolio/
+    - assets/icon/
