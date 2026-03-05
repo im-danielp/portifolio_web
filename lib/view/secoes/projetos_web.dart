@@ -33,7 +33,10 @@ class _ProjetosWebState extends State<ProjetosWeb> {
         .where((e) => ['Web', 'Design'].contains(e.tipo))
         .toList();
 
-    _controllers = List.generate(_listaProjetos.length, (_) => PageController());
+    _controllers = List.generate(_listaProjetos.length, (i) {
+      final images = _listaProjetos[i].images as List;
+      return PageController(initialPage: images.isNotEmpty ? images.length * 100 : 0);
+    });
 
     List.generate(_listaProjetos.length, (i) {
       return Timer.periodic(const Duration(seconds: 5), (_) {
@@ -42,11 +45,8 @@ class _ProjetosWebState extends State<ProjetosWeb> {
         final images = _listaProjetos[i].images as List;
 
         if (!controller.hasClients || images.isEmpty) return;
-        final current = (controller.page ?? controller.initialPage).round();
-        final next = (current + 1) % images.length;
 
-        controller.animateToPage(
-          next,
+        controller.nextPage(
           duration: const Duration(milliseconds: 400),
           curve: Curves.easeInOut,
         );
@@ -106,16 +106,19 @@ class _ProjetosWebState extends State<ProjetosWeb> {
                             children: [
                               InkWell(
                                 onTap: () => functions.visualizaFotos(context, e.images),
-                                child: PageView(
+                                child: PageView.builder(
                                   physics: const NeverScrollableScrollPhysics(),
                                   controller: _controllers[i],
-                                  children: (e.images as List).map<Widget>((image) {
+                                  itemBuilder: (context, index) {
+                                    final images = e.images as List;
+                                    if (images.isEmpty) return const SizedBox();
+                                    final image = images[index % images.length];
                                     return Image.asset(
                                       image,
                                       fit: BoxFit.cover,
                                       width: double.infinity,
                                     );
-                                  }).toList(),
+                                  },
                                 ),
                               ),
                               Positioned(

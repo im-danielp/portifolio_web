@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -51,10 +52,23 @@ class SobreController {
 
   // Currículo.
   Future<void> abrirCurriculo() async {
-    final String url = 'assets/pdf/curriculo.pdf';
-    await launchUrl(
-      Uri.parse(url),
-      webOnlyWindowName: '_blank',
+    const String urlPublicaPdf = 'https://danielpachecoferreira.vercel.app/pdf/curriculo.pdf';
+    final Uri urlGoogleViewer = Uri.parse(
+      'https://docs.google.com/gview?embedded=true&url=$urlPublicaPdf',
     );
+    final Uri urlNativa = Uri.parse('/pdf/curriculo.pdf');
+    final bool isMobileWeb =
+        kIsWeb &&
+        (defaultTargetPlatform == TargetPlatform.android ||
+            defaultTargetPlatform == TargetPlatform.iOS);
+    final Uri urlFinal = isMobileWeb ? urlGoogleViewer : urlNativa;
+
+    if (!await launchUrl(
+      urlFinal,
+      webOnlyWindowName: '_blank',
+      mode: LaunchMode.externalApplication,
+    )) {
+      throw Exception('Não foi possível abrir o currículo');
+    }
   }
 }

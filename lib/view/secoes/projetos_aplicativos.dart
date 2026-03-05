@@ -31,7 +31,10 @@ class _ProjetosAplicativosState extends State<ProjetosAplicativos> {
         .where((e) => 'Aplicativo'.contains(e.tipo))
         .toList();
 
-    _controllers = List.generate(_listaProjetos.length, (_) => PageController());
+    _controllers = List.generate(_listaProjetos.length, (i) {
+      final images = _listaProjetos[i].images as List;
+      return PageController(initialPage: images.isNotEmpty ? images.length * 100 : 0);
+    });
 
     List.generate(_listaProjetos.length, (i) {
       return Timer.periodic(const Duration(seconds: 5), (_) {
@@ -40,11 +43,8 @@ class _ProjetosAplicativosState extends State<ProjetosAplicativos> {
         final images = _listaProjetos[i].images as List;
 
         if (!controller.hasClients || images.isEmpty) return;
-        final current = (controller.page ?? controller.initialPage).round();
-        final next = (current + 1) % images.length;
 
-        controller.animateToPage(
-          next,
+        controller.nextPage(
           duration: const Duration(milliseconds: 400),
           curve: Curves.easeInOut,
         );
@@ -139,11 +139,15 @@ class _ProjetosAplicativosState extends State<ProjetosAplicativos> {
             child: PageView.builder(
               physics: const NeverScrollableScrollPhysics(),
               controller: _controllers[index],
-              itemCount: projeto.images.length,
-              itemBuilder: (context, i) => Image.asset(
-                projeto.images[i],
-                fit: BoxFit.cover,
-              ),
+              itemBuilder: (context, i) {
+                final images = projeto.images as List;
+                if (images.isEmpty) return const SizedBox();
+                final image = images[i % images.length];
+                return Image.asset(
+                  image,
+                  fit: BoxFit.cover,
+                );
+              },
             ),
           ),
           const Center(

@@ -10,7 +10,7 @@ class ProjetosController {
       tipo: 'Aplicativo',
       titulo: 'Blitz',
       descricao:
-          'Aplicativo mobile Android voltado para inspeções de segurança em atividades de engenharia elétrica.\nFunções para acompanhamento de equipes em tempo real, inspeção de locais para receber a atividade e inspeções sobre condições dos alojamentos e dormitórios.\nO usuário responde ao check-list e insere evidêcia fotográfica em caso de reprovação podendo acompanhar observação textual.',
+          'Aplicativo mobile voltado para inspeções de segurança em atividades de engenharia elétrica. Funções para acompanhamento de equipes em tempo real, inspeção de locais para receber a atividade e inspeções sobre condições dos alojamentos e dormitórios. O usuário responde ao check-list e insere evidêcia fotográfica junto a uma observação textual.',
       images: [
         'assets/projetos/blitz/menu.jpg',
         'assets/projetos/blitz/dinamica.jpg',

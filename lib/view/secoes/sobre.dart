@@ -1,4 +1,6 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portifolio_web/controller/constants.dart';
 import 'package:portifolio_web/controller/sobre_controller.dart';
@@ -77,13 +79,20 @@ class Sobre extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 8),
-        Text(
-          'Software Developer',
-          textAlign: isMobile ? TextAlign.center : TextAlign.start,
+        DefaultTextStyle(
           style: GoogleFonts.inter(
             color: Theme.of(context).colorScheme.primary,
             fontWeight: FontWeight.w900,
             fontSize: isMobile ? 28 : 36,
+          ),
+          child: AnimatedTextKit(
+            isRepeatingAnimation: false,
+            animatedTexts: [
+              TypewriterAnimatedText(
+                'Software Developer',
+                speed: const Duration(milliseconds: 100),
+              ),
+            ],
           ),
         ),
       ],
@@ -92,30 +101,22 @@ class Sobre extends StatelessWidget {
 
   Widget _buildSocialIcons(SobreController controller, BuildContext context) {
     return Wrap(
-      spacing: 18,
+      spacing: 5,
       runSpacing: 10,
       children: [
-        _socialInkWell('assets/sobre/github_logo.png', () => controller.abrirPagina(0)),
-        _socialInkWell('assets/sobre/linkedin_logo.jpg', () => controller.abrirPagina(1)),
-        InkWell(
-          onTap: () => controller.copiarEmail(context, size.width),
-          hoverColor: Colors.transparent,
-          splashColor: Colors.transparent,
-          highlightColor: Colors.transparent,
-          child: const Icon(Icons.email, size: 28),
+        IconButton(
+          icon: const Icon(FontAwesomeIcons.github),
+          onPressed: () => controller.abrirPagina(0),
+        ),
+        IconButton(
+          icon: const Icon(FontAwesomeIcons.linkedin),
+          onPressed: () => controller.abrirPagina(1),
+        ),
+        IconButton(
+          icon: const Icon(Icons.mail),
+          onPressed: () => controller.copiarEmail(context, size.width),
         ),
       ],
-    );
-  }
-
-  Widget _socialInkWell(String asset, VoidCallback onTap) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(8),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(8),
-        child: Image.asset(asset, width: 28, height: 28, fit: BoxFit.cover),
-      ),
     );
   }
 
