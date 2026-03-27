@@ -3,9 +3,9 @@ import 'package:portifolio_web/model/projeto_model.dart';
 
 class ProjetosController {
   static const List<ProjetoModel> listaProjetos = [
-    /// =========================================================================================================================================================== ///
+    /// ================================================================================================= ///
     /// Projetos
-    /// =========================================================================================================================================================== ///
+    /// ================================================================================================= ///
     ProjetoModel(
       tipo: 'Aplicativo',
       titulo: 'Blitz',
@@ -61,6 +61,22 @@ class ProjetosController {
 
     ProjetoModel(
       tipo: 'Aplicativo',
+      titulo: 'Loja Virtual',
+      descricao: 'descricao',
+      images: [
+        'assets/projetos/loja_virtual/drawer.png',
+        'assets/projetos/loja_virtual/produtos_grid.png',
+        'assets/projetos/loja_virtual/produtos_list.png',
+        'assets/projetos/loja_virtual/tela_produto.png',
+        'assets/projetos/loja_virtual/finalizar_compra.png',
+        'assets/projetos/loja_virtual/meus_pedidos.png',
+        'assets/projetos/loja_virtual/tela_lojas.png',
+      ],
+      tags: ['Flutter', 'Firebase', 'Git', 'Streams', 'NoSQL'],
+    ),
+
+    ProjetoModel(
+      tipo: 'Aplicativo',
       titulo: 'Chat Online',
       descricao:
           'Aplicativo pra troca de mensagens de textos utilizando FireBase com o conceito de Stream do Flutter.\nUtiliza o Firebase como base de dados não relacional (documento) para armezenar as mensagens e dados de envio. É necessário logar com uma conta do Google, exigindo autenticação e coletando estes dados para identificação de usuários.',
@@ -72,9 +88,9 @@ class ProjetosController {
       tags: ['Flutter', 'Firebase', 'Auth', 'Stream', 'NoSQL'],
     ),
 
-    /// =========================================================================================================================================================== ///
+    /// ================================================================================================= ///
     /// Design
-    /// =========================================================================================================================================================== ///
+    /// ================================================================================================= ///
     ProjetoModel(
       tipo: 'Design',
       titulo: 'Blue Cat - Compras',
@@ -141,9 +157,9 @@ class ProjetosController {
   ];
 
   ///
-  /// =========================================================================================================================================================== ///
+  /// ================================================================================================= ///
   /// Métodos
-  /// =========================================================================================================================================================== ///
+  /// ================================================================================================= ///
   void visualizaFotos(BuildContext context, List<String> images) {
     showDialog(
       context: context,
